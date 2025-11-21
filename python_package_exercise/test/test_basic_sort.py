@@ -28,6 +28,8 @@ def is_sorted(self, int_list):
 @pytest.fixture
 def int_lists():
     # fixture which creates testing data for all tests
+    # **Used the below line for a long random list of ints
+    # int_list = [random.randint(1, 10000) for _ in range(10000)]
     return [[3,2,1],
 	        [1,1,1],
 			np.random.randint(low=-10, high=200, size=5)] 

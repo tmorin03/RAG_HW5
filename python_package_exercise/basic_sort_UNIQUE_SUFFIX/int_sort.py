@@ -49,7 +49,8 @@ def bubble(int_list):
 
     # Capture final cpu usage metric for execution
     CPU_Usage = process.cpu_percent(interval=None)
-    print("CPU used during operation:", CPU_Usage, "%")
+    
+    return int_list, CPU_Usage
 
 def quick(int_list):
     
@@ -84,13 +85,14 @@ def quick(int_list):
         return quickSort(left) + middle + quickSort(right)
     
     # Call the quick sort operation
-    quickSort(int_list)
+    ret_list = quickSort(int_list)
 
     # End the psutil timer and calculate time elapsed
     end_timer = process.cpu_times()
     end_time = end_timer.user + end_timer.system
     total_time = end_time - start_time
-    print("Time taken to complete:", total_time)
+    
+    return ret_list, total_time
 
 
 def insertion(int_list):
@@ -123,10 +125,7 @@ def insertion(int_list):
     memory_end = process.memory_info().rss
     # Calculate change in memory usage
     memory_total = memory_end - memory_start
-    print("Total memory usage during operation:", memory_total, "bytes")
+
+    return int_list, memory_total
 
 
-int_list = [random.randint(1, 10000) for _ in range(10000)]
-bubble(int_list)
-quick(int_list)
-insertion(int_list)
