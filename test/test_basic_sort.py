@@ -26,7 +26,7 @@ def is_sorted(int_list):
     Testing oracle.
     """
     for i in range(len(int_list)-1):
-        if int_list[i] >= int_list[i+1]:
+        if int_list[i] > int_list[i+1]:
             return False
     
     return True
