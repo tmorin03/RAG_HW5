@@ -1,0 +1,25 @@
+# This is a pre-commit yml that limits the maximal file size, runs the
+# black and flake8 linters, and detect presence of aws credentials private keys.
+
+repos:
+  # Check for AWS credentials private keys
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-added-large-files
+        args: ["--maxkb=500"]
+
+      - id: detect-aws-credentials
+        args: ["--allow-missing-credentials"]
+
+  # Linting for Black
+  - repo: https://github.com/psf/black
+    rev: 25.9.0
+    hooks:
+      - id: black
+
+  # Linting for Flake
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.3.0
+    hooks:
+      - id: flake8
