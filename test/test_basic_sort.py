@@ -18,14 +18,15 @@
 
 import pytest
 import numpy as np
-import int_sort
+import basic_sort_UNIQUE_SUFFIX.int_sort as int_sort
+from copy import deepcopy
 
-def is_sorted(self, int_list):
+def is_sorted(int_list):
     """
     Testing oracle.
     """
-    for i in range(len(int_list)):
-        if int_list[i] <= int_list[i+1]:
+    for i in range(len(int_list)-1):
+        if int_list[i] >= int_list[i+1]:
             return False
     
     return True
@@ -41,9 +42,19 @@ def int_lists():
     
 def test_bubble(int_lists):
     for _list in int_lists:
-        sorted_list, metric = int_sort.
+        sorted_list, metric = int_sort.bubble(deepcopy(_list))
+        assert is_sorted(sorted_list)
+        assert isinstance(metric, (int,float))
+
 def test_quick(int_lists):
-    assert True
+    for _list in int_lists:
+        sorted_list, metric = int_sort.quick(deepcopy(_list))
+        assert is_sorted(sorted_list)
+        assert isinstance(metric, (int, float))
 
 def test_insertion(int_lists):
-    assert True
+    for _list in int_lists:
+        sorted_list, metric = int_sort.insertion(deepcopy(_list))
+        assert is_sorted(sorted_list)
+        assert isinstance(metric, (int, float))
+
