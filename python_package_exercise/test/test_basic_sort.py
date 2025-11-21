@@ -18,11 +18,16 @@
 
 import pytest
 import numpy as np
+import int_sort
 
 def is_sorted(self, int_list):
     """
     Testing oracle.
     """
+    for i in range(len(int_list)):
+        if int_list[i] <= int_list[i+1]:
+            return False
+    
     return True
 
 @pytest.fixture
@@ -35,8 +40,8 @@ def int_lists():
 			np.random.randint(low=-10, high=200, size=5)] 
     
 def test_bubble(int_lists):
-    assert True
-
+    for _list in int_lists:
+        sorted_list, metric = int_sort.
 def test_quick(int_lists):
     assert True
 
