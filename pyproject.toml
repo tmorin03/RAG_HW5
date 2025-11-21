@@ -9,6 +9,16 @@ name = "basic_sort_UNIQUE_SUFFIX"
 version = "0.0.1"
 authors = [{ name="Author1", email="author1@maine.edu" },
            { name="Author2", email="author2@maine.edu" },
+
+[tool.black]
+line-length = 100
+target-version = ["py39", "py310"]
+
+[tool.flake8]
+max-line-length = 100
+extend-ignore = ["E203", "W503"]
+docstring-convention = "google"
+
 ]
 description = "An exercise in the capstone course"
 readme = "README.md"
