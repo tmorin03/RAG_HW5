@@ -6,4 +6,3 @@ black
 wheel
 packaging
 psutil
--rrequirements.txt
