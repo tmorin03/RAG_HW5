@@ -79,5 +79,5 @@ jobs:
       if: github.event_name == 'push'
       uses: actions/upload-artifact@v4 # v3 is depreciated 
       with:
-        name: python-packages
+        name: python-packages-${{ matrix.os }}-${{ matrix.python-version }} # unique name 
         path: dist
