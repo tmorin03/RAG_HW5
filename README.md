@@ -32,3 +32,5 @@ Possible work division, three sub-teams:
 1. Implementing testing code, mastering pytest, black, flake8 (tasks 3,4,6).
 1. Understanding pytest, black, flake8 and mastering GitHub workflows (tasks 5,6).
 
+testing workflow in readme
+
