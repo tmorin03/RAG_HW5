@@ -76,8 +76,7 @@ jobs:
       run: |
         python -m build
     - name: List dist contents
-      run: |
-        dir dist
+      run: python -c "import os; print(os.listdir('dist'))"
     - name: Upload package
       if: github.event_name == 'push'
       uses: actions/upload-artifact@v4 # v3 is depreciated 
