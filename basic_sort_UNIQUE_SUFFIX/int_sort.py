@@ -22,7 +22,6 @@ measuring specific metrics in each.
 """
 
 import psutil
-import random
 
 
 def bubble(int_list):
