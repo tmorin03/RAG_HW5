@@ -6,3 +6,4 @@ black
 wheel
 packaging
 psutil
+numpy
