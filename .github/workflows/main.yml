@@ -56,7 +56,7 @@ jobs:
     needs: test
     strategy:
       matrix:
-        python-version: [3.9, 3.10]
+        python-version: [3.9, '3.10'] # Made it a string to see if that fixes 3.10 being read as 3.1
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
