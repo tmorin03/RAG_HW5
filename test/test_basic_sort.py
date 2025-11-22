@@ -21,30 +21,32 @@ import numpy as np
 import basic_sort_UNIQUE_SUFFIX.int_sort as int_sort
 from copy import deepcopy
 
+
 def is_sorted(int_list):
     """
     Testing oracle.
     """
-    for i in range(len(int_list)-1):
-        if int_list[i] > int_list[i+1]:
+    for i in range(len(int_list) - 1):
+        if int_list[i] > int_list[i + 1]:
             return False
-    
+
     return True
+
 
 @pytest.fixture
 def int_lists():
     # fixture which creates testing data for all tests
     # **Used the below line for a long random list of ints
     # int_list = [random.randint(1, 10000) for _ in range(10000)]
-    return [[3,2,1],
-	        [1,1,1],
-			np.random.randint(low=-10, high=200, size=5)] 
-    
+    return [[3, 2, 1], [1, 1, 1], np.random.randint(low=-10, high=200, size=5)]
+
+
 def test_bubble(int_lists):
     for _list in int_lists:
         sorted_list, metric = int_sort.bubble(deepcopy(_list))
         assert is_sorted(sorted_list)
-        assert isinstance(metric, (int,float))
+        assert isinstance(metric, (int, float))
+
 
 def test_quick(int_lists):
     for _list in int_lists:
@@ -52,9 +54,9 @@ def test_quick(int_lists):
         assert is_sorted(sorted_list)
         assert isinstance(metric, (int, float))
 
+
 def test_insertion(int_lists):
     for _list in int_lists:
         sorted_list, metric = int_sort.insertion(deepcopy(_list))
         assert is_sorted(sorted_list)
         assert isinstance(metric, (int, float))
-

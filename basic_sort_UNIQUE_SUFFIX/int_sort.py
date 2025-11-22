@@ -24,14 +24,14 @@ measuring specific metrics in each.
 import psutil
 import random
 
+
 def bubble(int_list):
-    
     """
-	Perform a bubble sort operation and measure its CPU usage using psutil
-	
-	:param int_list: list[int]
-	:returns: A sorted list of ints, from smallest to largest
-	"""
+    Perform a bubble sort operation and measure its CPU usage using psutil
+
+    :param int_list: list[int]
+    :returns: A sorted list of ints, from smallest to largest
+    """
 
     print("Bubble Sort")
 
@@ -44,23 +44,23 @@ def bubble(int_list):
     for i in range(len(int_list) - 1):
         val = i + 1
         for j in range(len(int_list) - val):
-               if int_list[j] > int_list[j+1]:
-                   int_list[j], int_list[j+1] = int_list[j+1], int_list[j]
+            if int_list[j] > int_list[j + 1]:
+                int_list[j], int_list[j + 1] = int_list[j + 1], int_list[j]
 
     # Capture final cpu usage metric for execution
     CPU_Usage = process.cpu_percent(interval=None)
-    
+
     return int_list, CPU_Usage
 
+
 def quick(int_list):
-    
     """
-	Perform a recursive quick sort operation and measure its runtime using psutil
-	
-	:param int_list: list[int]
-	:returns: A sorted list of ints, from smallest to largest
-	"""
-    
+    Perform a recursive quick sort operation and measure its runtime using psutil
+
+    :param int_list: list[int]
+    :returns: A sorted list of ints, from smallest to largest
+    """
+
     print("Quick Sort")
 
     # Create a psutil process to measure stats
@@ -78,12 +78,12 @@ def quick(int_list):
         # Splits the list in half each time to sort
         split_val = cur_list[len(cur_list) // 2]
 
-        left  = [x for x in cur_list if x < split_val]
-        middle   = [x for x in cur_list if x == split_val]
+        left = [x for x in cur_list if x < split_val]
+        middle = [x for x in cur_list if x == split_val]
         right = [x for x in cur_list if x > split_val]
 
         return quickSort(left) + middle + quickSort(right)
-    
+
     # Call the quick sort operation
     ret_list = quickSort(int_list)
 
@@ -91,18 +91,17 @@ def quick(int_list):
     end_timer = process.cpu_times()
     end_time = end_timer.user + end_timer.system
     total_time = end_time - start_time
-    
+
     return ret_list, total_time
 
 
 def insertion(int_list):
-    
     """
-	Perform an insertion sort operation and measure its CPU usage using psutil
-	
-	:param int_list: list[int]
-	:returns: A sorted list of ints, from smallest to largest
-	"""
+    Perform an insertion sort operation and measure its CPU usage using psutil
+
+    :param int_list: list[int]
+    :returns: A sorted list of ints, from smallest to largest
+    """
 
     print("Insertion Sort")
 
@@ -120,12 +119,10 @@ def insertion(int_list):
             int_list[j + 1] = int_list[j]
             j -= 1
         int_list[j + 1] = val
-    
+
     # Get memory usage at the end of the operation
     memory_end = process.memory_info().rss
     # Calculate change in memory usage
     memory_total = memory_end - memory_start
 
     return int_list, memory_total
-
-
