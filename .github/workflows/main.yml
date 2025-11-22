@@ -75,8 +75,9 @@ jobs:
     - name: Build package
       run: |
         python -m build
-        # see that the dist directory contains the wheel
-        ls -la dist
+    - name: List dist contents
+      run: |
+        dir dist
     - name: Upload package
       if: github.event_name == 'push'
       uses: actions/upload-artifact@v4 # v3 is depreciated 
